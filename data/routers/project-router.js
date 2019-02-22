@@ -2,7 +2,7 @@ const express = require('express');
 const ProjectDb = require('../helpers/projectModel');
 const router = express.Router();
 
-// Get Requests
+// GET REQUESTS
 
 router.get('/', async (req, res) => {
   try {
@@ -43,6 +43,8 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//POST REQUEST
+
 router.post('/', async (req, res) => {
   try {
     const project = await ProjectDb.insert(req.body);
@@ -57,6 +59,8 @@ router.post('/', async (req, res) => {
       });
   }
 });
+
+//UPDATE REQUEST
 
 router.put('/:id', async (req, res) => {
   try {
@@ -80,6 +84,8 @@ router.put('/:id', async (req, res) => {
       });
   }
 });
+
+// DELETE REQUEST
 
 router.delete('/:id', async (req, res) => {
   try {
