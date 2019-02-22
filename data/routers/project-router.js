@@ -43,4 +43,19 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  try {
+    const project = await ProjectDb.insert(req.body);
+    res
+      .status(201)
+      .json(project);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'Oh, crap. There was an error adding this post.'
+      });
+  }
+});
+
 module.exports = router;
