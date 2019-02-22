@@ -58,4 +58,27 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put('/:id', async (req, res) => {
+  try {
+    const project = await ProjectDb.update(req.params.id, req.body);
+    if (project) {
+      res
+        .status(200)
+        .json(project);
+    } else {
+      res
+        .status(404)
+        .json({
+          message: 'Poop. This project could not be found.'
+        });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'Gah, there was an error updating this post!'
+      });
+  }
+});
+
 module.exports = router;
