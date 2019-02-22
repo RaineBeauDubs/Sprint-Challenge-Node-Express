@@ -85,6 +85,31 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// DELETE REQUEST
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const count = await ActionDb.remove(req.params.id);
+    if (count > 0) {
+      res
+      .status(200)
+      .json({
+        message: 'Yay! This action has been successfully deleted.'
+      });
+    } else {
+      res
+        .status(404)
+        .json({
+          message: 'Awwh shiznits, this action could not be found!'
+        });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'Well, darn it, there was an error removing this action.'
+      });
+  }
+});
 
 module.exports = router;
