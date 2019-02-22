@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
     res
       .status(500)
       .json({
-        message: 'Oh, crap. There was an error adding this post.'
+        message: 'Oh, crap. There was an error adding this project.'
       });
   }
 });

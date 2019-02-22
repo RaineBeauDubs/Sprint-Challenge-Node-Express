@@ -43,4 +43,21 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+//POST REQUEST
+
+router.post('/', async (req, res) => {
+  try {
+    const action = await ActionDb.insert(req.body);
+    res
+      .status(201)
+      .json(action);
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'Oh, crap. There was an error adding this action.'
+      });
+  }
+});
+
 module.exports = router;
