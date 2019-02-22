@@ -60,4 +60,31 @@ router.post('/', async (req, res) => {
   }
 });
 
+//UPDATE REQUEST
+
+router.put('/:id', async (req, res) => {
+  try {
+    const action = await ActionDb.update(req.params.id, req.body);
+    if (action) {
+      res
+        .status(200)
+        .json(action);
+    } else {
+      res
+        .status(404)
+        .json({
+          message: 'Poop. This action could not be found.'
+        });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: 'Gah, there was an error updating this action!'
+      });
+  }
+});
+
+
+
 module.exports = router;

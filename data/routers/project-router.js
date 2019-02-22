@@ -80,7 +80,7 @@ router.put('/:id', async (req, res) => {
     res
       .status(500)
       .json({
-        message: 'Gah, there was an error updating this post!'
+        message: 'Gah, there was an error updating this project!'
       });
   }
 });
